@@ -1,3 +1,8 @@
+from django.contrib.admin.views.decorators import staff_member_required
+@staff_member_required
+def all_orders(request):
+    orders = Order.objects.all().prefetch_related('items', 'user')
+    return render(request, 'cart_app/all_orders.html', {'orders': orders})
 from django.shortcuts import redirect, get_object_or_404, render
 from Daroos_app.models import Daroo
 from cart_app.form import CheckoutForm
