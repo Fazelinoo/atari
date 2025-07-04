@@ -1,0 +1,29 @@
+{# templates/product_detail.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.title }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/Daroos.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="product-image">
+    <img src="{% if product.image %}{{ product.image.url }}{% else %}https://cdn.pixabay.com/photo/2016/06/24/10/47/herbs-1473754_1280.jpg{% endif %}" alt="تصویر محصول">
+  </div>
+  <div class="product-info">
+    <h1 id="product-title">{{ product.title }}</h1>
+    <p id="product-description">{{ product.description }}</p>
+    <div class="price" id="product-price">{{ product.price }}.000 تومان</div>
+
+    <form method="post" action="{% url 'cart_add' product.id %}" class="add-to-cart-form">
+      {% csrf_token %}
+      <button type="submit" class="buy-btn">افزودن به سبد خرید</button>
+    </form>
+
+    <br>
+    <button class="back-btn" onclick="window.history.back()">← بازگشت به صفحه قبل</button>
+  </div>
+</div>
+{% endblock %}

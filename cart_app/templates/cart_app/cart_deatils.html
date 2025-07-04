@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}سبد خرید | عطاری فاضل{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="cart-container">
+  <div class="cart-title">سبد خرید شما</div>
+  {% if cart_items %}
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>محصول</th>
+        <th>تصویر</th>
+        <th>تعداد</th>
+        <th>قیمت واحد</th>
+        <th>قیمت کل</th>
+        <th>حذف</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart_items %}
+      <tr>
+        <td>{{ item.product.title }}</td>
+        <td>
+          <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}https://cdn.pixabay.com/photo/2016/06/24/10/47/herbs-1473754_1280.jpg{% endif %}" alt="{{ item.product.title }}">
+        </td>
+        <td>
+          <form action="{% url 'cart_update' item.product.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" style="width:50px; text-align:center; border-radius:8px; border:1px solid #a5d6a7;">
+            <button type="submit" style="background:#81c784; color:#1b5e20; border:none; border-radius:8px; padding:3px 10px; margin-right:5px; cursor:pointer;">بروزرسانی</button>
+          </form>
+        </td>
+        <td>{{ item.product.price }}.000 تومان</td>
+        <td>{{ item.total_price }}.000 تومان</td>
+        <td>
+          <form action="{% url 'cart_remove' item.product.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" style="background:#dc3545; color:white; border:none; border-radius:8px; padding:3px 10px; cursor:pointer;">حذف</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="cart-total">
+    جمع کل: {{ cart_total }}.000 تومان
+  </div>
+  <a href="{% url 'checkout' %}" class="btn-checkout">تسویه حساب</a>
+  {% else %}
+  <div class="empty-cart">
+    سبد خرید شما خالی است.
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

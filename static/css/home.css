@@ -1,0 +1,592 @@
+/* تنظیمات پایه */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Vazirmatn', sans-serif;
+    background: #eaf5ea;
+    color: #2e7d32;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+    border-radius: 15px;
+  }
+  button {
+    font-family: inherit;
+  }
+
+  /* بخش معرفی (Hero) */
+  .hero {
+    background: linear-gradient(135deg, #a8d5a2, #4caf50);
+    color: #e8f5e9;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 80px 30px 100px;
+    gap: 40px;
+  }
+  .hero-text {
+    max-width: 600px;
+    flex: 1 1 400px;
+    text-align: center;
+    user-select: none;
+  }
+  .hero-text h1 {
+    font-size: 3.6rem;
+    margin-bottom: 20px;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    text-shadow: 0 3px 8px rgba(0, 50, 0, 0.3);
+  }
+  .hero-text p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 35px;
+    font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0, 50, 0, 0.15);
+  }
+  .hero-text button {
+    background: #2e7d32;
+    color: #e8f5e9;
+    border: none;
+    padding: 15px 50px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 80, 0, 0.5);
+    transition: background-color 0.35s ease, transform 0.25s ease;
+    user-select: none;
+  }
+  .hero-text button:hover,
+  .hero-text button:focus {
+    background: #a5d6a7;
+    color: #1b5e20;
+    outline: none;
+    transform: scale(1.05);
+  }
+
+  .hero-img {
+    flex: 1 1 400px;
+    max-width: 480px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(46, 125, 50, 0.3);
+    user-select: none;
+  }
+
+  /* بخش محصولات */
+  #products {
+    padding: 60px 20px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-family: 'Vazirmatn', sans-serif;
+  }
+
+  #products h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 50px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #1b5e20;
+    text-shadow: 0 3px 7px rgba(46, 125, 50, 0.3);
+    user-select: none;
+  }
+
+  .product-grid {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+  }
+
+  .product-card {
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(46, 125, 50, 0.15);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card:hover,
+  .product-card:focus {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 25px 45px rgba(46, 125, 50, 0.35);
+    outline: none;
+  }
+  
+  .product-card img {
+    border-radius: 20px;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.25);
+    margin-bottom: 20px;
+    transition: transform 0.35s ease;
+    user-select: none;
+  }
+  .product-card:hover img,
+  .product-card:focus img {
+    transform: scale(1.12) rotate(-2deg);
+  }
+
+  .product-card h3 {
+    font-size: 1.9rem;
+    color: #2e7d32;
+    margin-bottom: 8px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-card p {
+    font-size: 1.15rem;
+    color: #4a6a31;
+    text-align: center;
+    flex-grow: 1;
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .price {
+    font-size: 1.4rem;
+    color: #388e3c;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: 1.2px;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    user-select: none;
+  }
+
+  .btn-buy {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 1.25rem;
+    font-weight: 800;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.5);
+    transition: background 0.4s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-buy .icon-cart {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2.2;
+  }
+
+  .btn-buy:hover,
+  .btn-buy:focus {
+    background: linear-gradient(135deg, #81c784, #1b5e20);
+    box-shadow: 0 12px 40px rgba(46, 125, 50, 0.7);
+    transform: scale(1.12);
+    outline: none;
+  }
+
+  .btn-buy:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.25);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .btn-buy:active:after {
+    opacity: 1;
+    transform: scale(1.3);
+    transition: 0s;
+  }
+
+  /* انیمیشن ورود کارت‌ها */
+  .product-card {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeSlideIn 0.8s forwards;
+  }
+  .product-card:nth-child(1) {
+    animation-delay: 0.15s;
+  }
+  .product-card:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .product-card:nth-child(3) {
+    animation-delay: 0.45s;
+  }
+
+  @keyframes fadeSlideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* بخش درباره ما */
+  #about {
+    background: #d7ecd9;
+    padding: 70px 30px 90px;
+    text-align: center;
+    user-select: none;
+  }
+  #about h2 {
+    font-size: 2.8rem;
+    color: #2e7d32;
+    margin-bottom: 25px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 5px rgba(0, 80, 0, 0.15);
+  }
+  #about p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 1.2rem;
+    color: #355e27;
+    line-height: 1.6;
+    font-weight: 600;
+  }
+
+  /* بخش تماس با ما */
+  #contact {
+    background: #4caf50;
+    color: #e8f5e9;
+    padding: 70px 25px 100px;
+    text-align: center;
+    user-select: none;
+  }
+  #contact h2 {
+    font-size: 2.8rem;
+    margin-bottom: 35px;
+    font-weight: 900;
+    letter-spacing: 1.7px;
+    text-shadow: 0 3px 8px rgba(0, 40, 0, 0.35);
+  }
+
+  #contact form {
+    max-width: 520px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #contact input,
+  #contact textarea {
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.1rem;
+    font-family: inherit;
+    resize: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s ease;
+  }
+
+  #contact input:focus,
+  #contact textarea:focus {
+    outline: none;
+    box-shadow: 0 6px 25px #a8d5a2;
+  }
+
+  #contact button {
+    padding: 16px 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    background: #2e7d32;
+    color: #e8f5e9;
+    border-radius: 45px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 90, 0, 0.5);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    user-select: none;
+  }
+  #contact button:hover,
+  #contact button:focus {
+    background: #a5d6a7;
+    color: #1b5e20;
+    transform: scale(1.05);
+    outline: none;
+  }
+
+  /* فوتر */
+  footer {
+    background: #2e7d32;
+    color: #c8e6c9;
+    text-align: center;
+    padding: 30px 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    user-select: none;
+  }
+
+  /* دکمه سه خط */
+  .sidebar-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 0;
+    margin-left: 18px;
+    z-index: 1001;
+  }
+  .sidebar-toggle span {
+    display: block;
+    height: 4px;
+    width: 28px;
+    background: #fff;
+    border-radius: 3px;
+    transition: 0.3s;
+  }
+
+  /* سایدبار شناور */
+  .sidebar-float {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 270px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -4px 0 24px rgba(46,125,50,0.13);
+    z-index: 1100;
+    padding: 32px 20px 20px 20px;
+    transition: right 0.35s cubic-bezier(.7,.2,.2,1);
+    border-radius: 0 0 0 25px;
+    font-size: 1.15rem;
+    overflow-y: auto;
+  }
+  .sidebar-float.open {
+    right: 0;
+  }
+  .sidebar-float h3 {
+    font-size: 1.3rem;
+    color: #2e7d32;
+    margin-bottom: 18px;
+    font-weight: 900;
+    letter-spacing: 1px;
+  }
+  .sidebar-float ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-float li {
+    margin-bottom: 14px;
+  }
+  .sidebar-float a {
+    color: #388e3c;
+    font-weight: 700;
+    transition: color 0.2s;
+    border-radius: 7px;
+    padding: 5px 10px;
+    display: block;
+  }
+  .sidebar-float a:hover,
+  .sidebar-float a:focus {
+    background: #e8f5e9;
+    color: #1b5e20;
+    outline: none;
+  }
+  .close-btn {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    color: #2e7d32;
+    cursor: pointer;
+    z-index: 1200;
+  }
+
+  /* اوورلی برای بستن سایدبار */
+  #sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(46,125,50,0.18);
+    z-index: 1099;
+    transition: 0.3s;
+  }
+  #sidebar-overlay.active {
+    display: block;
+  }
+
+  /* ریسپانسیو */
+  @media (max-width: 860px) {
+    .hero {
+      flex-direction: column;
+      padding: 60px 20px 80px;
+    }
+    .hero-text, .hero-img {
+      flex: unset;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    nav {
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    header {
+      justify-content: center;
+      gap: 25px;
+    }
+    .hero-text h1 {
+      font-size: 2.5rem;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* نمایش دکمه سه خط در موبایل */
+  @media (max-width: 900px) {
+    .sidebar-toggle {
+      display: flex;
+    }
+  }
+
+  /* استایل جستجو در هدر */
+  .header-search {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #e8f5e9;
+    border-radius: 25px;
+    padding: 3px 10px 3px 3px;
+    height: 38px;
+  }
+  .signup-button {
+  background: #81c784;
+  color: #1b5e20;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 8px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-right: 12px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+  .signup-button:hover,
+  .signup-button:focus {
+  background: #66bb6a;
+  transform: scale(1.05);
+  outline: none;
+}
+.signup-button i {
+  margin-left: 8px;
+}
+
+    
+    .header-search input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 1rem;
+      padding: 6px 8px;
+      border-radius: 20px;
+      color: #2e7d32;
+      width: 110px;
+      transition: width 0.3s;
+    }
+    .header-search input:focus {
+      width: 160px;
+    }
+    .header-search button {
+      background: none;
+      border: none;
+      color: #2e7d32;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0 6px;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .header-search button:hover,
+    .header-search button:focus {
+      background: #c8e6c9;
+    }
+  /* نمایش محصولات به صورت اسکرول افقی در موبایل */
+  @media (max-width: 700px) {
+    .product-grid {
+      display: flex !important;
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 18px;
+      padding-bottom: 10px;
+      scroll-snap-type: x mandatory;
+    }
+    .product-card {
+      min-width: 240px;
+      max-width: 80vw;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+    }
+  }
+
+  .product-item:nth-child(n+11) {
+  display: none;
+}
+.load-more-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.load-more-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);}
+
+ @media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    justify-items: start;
+    gap: 10px;
+  }
+
+  .product-card {
+    text-align: left;
+  }
+}

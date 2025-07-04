@@ -1,0 +1,103 @@
+from django.shortcuts import redirect, get_object_or_404, render
+from Daroos_app.models import Daroo
+from cart_app.form import CheckoutForm
+from .models import Order, OrderItem
+
+
+
+def cart_add(request, product_id):
+    
+    product = get_object_or_404(Daroo, id=product_id)
+    cart = request.session.get('cart', {})
+
+    if str(product_id) in cart:
+        cart[str(product_id)] += 1
+    else:
+        cart[str(product_id)] = 1
+
+    request.session['cart'] = cart
+    return redirect('cart_detail')
+def cart_detail(request):
+    if not request.user.is_authenticated:
+        return redirect('/accounts/login')
+    cart = request.session.get('cart', {})
+    products = Daroo.objects.filter(id__in=cart.keys())
+    cart_items = []
+
+    cart_total = 0
+    for product in products:
+        quantity = cart.get(str(product.id), 0)
+        total_price = product.price * quantity
+        cart_items.append({
+            'product': product,
+            'quantity': quantity,
+            'total_price': total_price,
+        })
+        cart_total += total_price
+
+    context = {
+        'cart_items': cart_items,
+        'cart_total': cart_total,
+    }
+    return render(request, 'cart_app/cart_deatils.html', context)
+def cart_update(request, product_id):
+    if request.method == 'POST':
+        quantity = int(request.POST.get('quantity', 1))
+        cart = request.session.get('cart', {})
+
+        if quantity > 0:
+            cart[str(product_id)] = quantity
+        else:
+            cart.pop(str(product_id), None)
+
+        request.session['cart'] = cart
+
+    return redirect('cart_detail')
+
+
+
+def cart_remove(request, product_id):
+    if request.method == 'POST':
+        cart = request.session.get('cart', {})
+        cart.pop(str(product_id), None)  # حذف محصول اگر موجود باشه
+        request.session['cart'] = cart
+
+    return redirect('cart_detail')
+
+
+
+def checkout(request):
+    # اینجا می‌تونی منطق پرداخت یا فرم تسویه رو اضافه کنی
+    return render(request, 'cart_app/checkout.html')
+
+
+def checkout(request):
+    if not request.user.is_authenticated:
+        return redirect('/accounts/login/')
+    
+    cart = request.session.get('cart', {})  # فرض بر اینکه cart توی session نگهداری می‌شه
+
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST)
+        if form.is_valid():
+            address = form.cleaned_data['address']
+            phone_number = form.cleaned_data['phone_number']
+
+            for product_id, quantity in cart.items():
+                product = Daroo.objects.get(id=product_id)
+                Order.objects.create(
+                    user=request.user,
+                    product=product,
+                    quantity=quantity,
+                    address=address,
+                    phone_number=phone_number
+                )
+
+            request.session['cart'] = {}  # خالی کردن سبد خرید
+            return redirect('order_success')  # صفحه موفقیت
+    else:
+        form = CheckoutForm()
+
+    return render(request, 'cart_app/checkout.html', {'form': form})    
+def order_success(request):
+    return render(request, 'cart_app/order_success.html')

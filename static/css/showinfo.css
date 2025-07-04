@@ -1,0 +1,156 @@
+body {
+  font-family: 'Vazirmatn', sans-serif;
+  background-color: #f9fafb;
+  direction: rtl;
+  margin: 0;
+  padding: 0;
+  margin-top: 100px;
+}
+
+/* کارت اطلاعات */
+.user-info-card {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+/* انیمیشن fade-in */
+.animate-fade-in {
+  animation: fadeInCard 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.user-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  background-color: #e0e7ff;
+  color: #1e40af;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #111827;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* گرید اطلاعات */
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.user-grid label {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.user-grid p {
+  margin: 4px 0 0;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* وضعیت حساب */
+.badge-active {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-radius: 12px;
+  margin-top: 4px;
+}
+
+/* دکمه‌ها */
+.user-actions {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.user-actions button {
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-edit {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #1e40af;
+}
+
+.btn-back {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.btn-back:hover {
+  background-color: #e5e7eb;
+}
+
+/* موبایل */
+@media (max-width: 480px) {
+  .user-info-card {
+    padding: 16px;
+  }
+
+  .user-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .user-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .user-actions button {
+    width: 100%;
+  }
+}
+
+

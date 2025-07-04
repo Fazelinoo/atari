@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} ورود به حساب کاربری{% endblock %}
+{% block extra_head %} <link rel="stylesheet" href={% static 'css/account.css' %}> <link rel="stylesheet" href={% static 'css/home.css' %}> {% endblock %}
+
+{% block content %}
+<body>
+  <div class="login-container">
+    <h2>ورود به حساب کاربری</h2>
+    <form class="login-form" method="post" action="">
+      {% csrf_token %}
+
+      <label for="username">نام کاربری</label>
+      <input type="text" id="username" name="username" required autofocus>
+      <label for="password">رمز عبور</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit" class="login-btn">ورود</button>
+    </form>
+    <div class="login-links">
+      <span>حساب کاربری ندارید؟ <a href="{% url 'signin' %}">ثبت‌نام</a></span>
+      <br>
+      <a href="#">فراموشی رمز عبور</a>
+    </div>
+  </div>
+</body>
+
+{% endblock %}
+</html>

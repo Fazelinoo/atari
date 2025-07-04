@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}عطاری فاضل{% endblock %}</title>
+  <!-- فونت و آیکون‌ها -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- استایل‌های پروژه -->
+  <!-- <link rel="stylesheet" href="{% static 'css/header.css' %}"> -->
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  {% include 'header.html' %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    &copy; ۱۴۰۴ عطاری فاضل | تمامی حقوق محفوظ است.
+  </footer>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

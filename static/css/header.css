@@ -1,0 +1,414 @@
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 10px;
+  background: #4caf50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.sidebar-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar-toggle span {
+  display: block;
+  height: 4px;
+  width: 22px;
+  background: #fff;
+  border-radius: 3px;
+}
+
+.logo {
+  font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: #e8f5e9;
+  letter-spacing: 1px;
+  user-select: none;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+
+
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+nav a {
+  color: #e8f5e9;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 7px 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+nav a:hover,
+nav a:focus {
+  background-color: #81c784;
+  outline: none;
+  color: #1b5e20;
+}
+
+.header-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-search {
+  display: flex !important;
+  align-items: center;
+  gap: 4px;
+  background: #e8f5e9;
+  border-radius: 25px;
+  padding: 4px 10px;
+  height: 36px;
+  max-width: 220px;
+  flex-shrink: 0;
+}
+
+.header-search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: .97rem;
+  padding: 4px 6px;
+  border-radius: 20px;
+  color: #2e7d32;
+  width: 100%;
+  min-width: 0;
+}
+
+.header-search input:focus {
+  width: 100%;
+}
+
+.header-search button {
+  background: none;
+  border: none;
+  color: #2e7d32;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 4px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.cart-button {
+  display: flex;
+  align-items: center;
+  background: #81c784;
+  color: #1b5e20;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 7px 14px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.cart-button i {
+  margin-left: 5px;
+}
+
+.signup-button {
+  background: #81c784;
+  color: #1b5e20;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 7px 14px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+  display: flex !important;
+  align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.signup-button i {
+  margin-left: 5px;
+}
+
+/* Sidebar styles (باقی مثل قبل) */
+.sidebar-float {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: 280px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -2px 0 16px rgba(46,125,50,.12);
+  z-index: 2000;
+  transition: right 0.3s;
+}
+
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(40, 60, 40, 0.13);
+  z-index: 1999;
+  transition: background 0.3s;
+}
+
+.sidebar-float.open {
+  display: block;
+}
+#sidebar-overlay.active {
+  display: block;
+}
+.user-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  min-width: 150px;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.user-dropdown a, .user-dropdown button {
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding: 8px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.user-dropdown a {
+  color: #2e7d32;
+}
+
+.user-dropdown a:hover {
+  background-color: #e8f5e9;
+}
+
+
+.user-dropdown a:hover, .user-dropdown button:hover {
+  background-color: #e8f5e9;
+}
+#user-menu-toggle {
+  position: relative;
+}
+.user-dropdown button {
+  color: #c62828;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+}
+.user-dropdown button:hover {
+  background-color: #ffcdd2;
+  color: #b71c1c;
+}
+
+/* ==================== موبایل (زیر 900px) ==================== */
+@media (max-width: 900px) {
+  header {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 3vw 2px 3vw;
+  }
+
+  .logo {
+    order: 1;
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-size: 1.18rem;
+    flex: none;
+  }
+
+  .header-toolbar {
+    order: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    width: 100%;
+    gap: 4px;
+  }
+
+  .sidebar-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 2px;
+    z-index: 1001;
+    order: 1;
+  }
+
+  .sidebar-toggle span {
+    display: block;
+    height: 4px;
+    width: 22px;
+    background: #fff;
+    border-radius: 3px;
+    transition: 0.3s;
+  }
+
+  .header-search {
+    order: 2;
+    flex: 1 1 40%;
+    max-width: 200px;
+    min-width: 0;
+    margin: 0 2px;
+    height: 31px;
+    padding: 2px 7px 2px 2px;
+  }
+
+  .cart-button {
+    order: 3;
+    margin: 0 2px;
+    padding: 6px 8px;
+    font-size: 0.92rem;
+  }
+
+  .signup-button {
+    order: 4;
+    margin: 0 2px;
+    padding: 6px 9px;
+    font-size: 0.92rem;
+  }
+
+  nav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo {
+    font-size: .98rem;
+    margin-bottom: 8px;
+  }
+
+  .header-toolbar {
+    gap: 2px;
+  }
+
+  .header-search input {
+    width: 35px;
+    font-size: .91rem;
+  }
+
+  .header-search input:focus {
+    width: 65px;
+  }
+}
+
+/* ==================== دسکتاپ (بالای 900px) ==================== */
+@media (min-width: 901px) {
+  header {
+    justify-content: space-between;
+    padding: 10px 3vw;
+  }
+
+  .header-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  nav {
+    display: flex !important;
+    gap: 20px;
+  }
+
+  /* ✅ حالا دکمه منوی همبرگری در دسکتاپ هم دیده بشه */
+  .sidebar-toggle {
+    display: flex !important;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .sidebar-toggle span {
+    background: #fff;
+    height: 4px;
+    width: 24px;
+    border-radius: 3px;
+    margin: 3px 0;
+  }
+
+  .header-search {
+    max-width: 220px;
+    height: 36px;
+    padding: 4px 10px;
+  }
+
+  .header-search input {
+    width: 100%;
+  }
+
+  .cart-button,
+  .signup-button {
+    font-size: 1rem;
+    padding: 7px 14px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    margin-right: 16px;
+  }
+}
+@media (min-width: 901px) {
+  .sidebar-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .sidebar-toggle span {
+    display: block;
+    height: 4px;
+    width: 24px;
+    background: white;
+    border-radius: 3px;
+  }
+}

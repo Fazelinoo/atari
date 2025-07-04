@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block title %} عطاری فاضل{% endblock %}
+
+{% block extra_head %}  <link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
+</head>
+{% block content %}
+<body>
+
+
+
+<section class="hero" id="hero">
+  <div class="hero-text">
+    <h1>خوش آمدید به عطاری فاضل</h1>
+    <p>به دنیای طبیعت و سلامت قدم بگذارید. بهترین محصولات گیاهی و طبیعی را از ما بخواهید.</p>
+    <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">مشاهده محصولات</button>
+  </div>
+  <img src='{% static "photo.png" %}' alt="عطاری فاضل" class="hero-img" />
+</section>
+
+<section id="products">
+  <h2>محصولات ما</h2>
+  <div class="products-container">
+    <div class="product-grid">
+      {% for daroo in Daroos %}
+      <a href="{% url 'product_detail' daroo.id %}" style="text-decoration:none; color:inherit;">
+        <article class="product-card" tabindex="0" {% if forloop.counter > 6 %}style="display:none;"{% endif %}>
+          <img src="{% if daroo.image %}{{ daroo.image.url }}{% else %}https://cdn.pixabay.com/photo/2016/06/24/10/47/herbs-1473754_1280.jpg{% endif %}" alt="{{ daroo.title }}" />
+          <h3>{{ daroo.title }}</h3>
+          <p>{{ daroo.description }}</p>
+          <div class="price">{{ daroo.price }}.000تومان</div>
+          <button class="btn-buy" aria-label="خرید {{ daroo.title }}">
+            <svg class="icon-cart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13M7 13l-4-8m5 0v-2a1 1 0 012 0v2m6 0v-2a1 1 0 012 0v2"/>
+            </svg>
+            خرید
+          </button>
+        </article>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="show-buttons" style="margin-top: 20px; text-align: center;">
+    <button id="showMoreBtn" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">نمایش بیشتر</button>
+    <button id="showLessBtn" style="display:none; padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px;">نمایش کمتر</button>
+  </div>
+</section>
+
+
+
+
+<section id="about">
+  <h2>درباره ما</h2>
+  <p>
+    عطاری فاضل با بیش از ۲۰ سال تجربه در ارائه بهترین محصولات گیاهی و طبیعی،  
+    به شما این اطمینان را می‌دهد که سلامتی و کیفیت همیشه در اولویت است.  
+    ما مفتخریم که همراه شما در مسیر سلامت و طبیعت هستیم.
+  </p>
+</section>
+
+<section id="contact">
+  <h2>تماس با ما</h2>
+  <form>
+   <p>شماره تماس : 09133824432</p>
+</section>
+
+
+
+{% block extra_js %}
+<script>
+  const products = document.querySelectorAll(".product-card");
+  const showMoreBtn = document.getElementById("showMoreBtn");
+  const showLessBtn = document.getElementById("showLessBtn");
+
+  showMoreBtn.addEventListener("click", function() {
+    products.forEach(function(p) {
+      p.style.display = "block";
+    });
+    showMoreBtn.style.display = "none";
+    showLessBtn.style.display = "inline-block";
+  });
+
+  showLessBtn.addEventListener("click", function() {
+    products.forEach(function(p, index) {
+      if (index >= 6) {
+        p.style.display = "none";
+      }
+    });
+    showMoreBtn.style.display = "inline-block";
+    showLessBtn.style.display = "none";
+    window.scrollTo({
+      top: document.getElementById('products').offsetTop,
+      behavior: 'smooth'
+    });
+  });
+;
+document.addEventListener('DOMContentLoaded', function() {
+  const items = document.querySelectorAll('.product-item');
+  let currentIndex = 0;
+  const itemsPerPage = 6;
+
+  function showItems() {
+    const nextIndex = currentIndex + itemsPerPage;
+    for (let i = currentIndex; i < nextIndex && i < items.length; i++) {
+      items[i].style.display = 'block';
+    }
+    currentIndex = nextIndex;
+    if (currentIndex >= items.length) {
+      document.getElementById('loadMore').style.display = 'none';
+    }
+  }
+
+  // شروع: فقط اولین 10 تا
+  showItems();
+
+  document.getElementById('loadMore').addEventListener('click', showItems);
+});
+function openSidebar() {
+  document.getElementById('sidebar-float').classList.add('open');
+  document.getElementById('sidebar-overlay').classList.add('active');
+}
+function closeSidebar() {
+  document.getElementById('sidebar-float').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('active');
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('loadMore').addEventListener('click', function() {
+    document.querySelectorAll('.product-item:nth-child(n+11)').forEach(function(item) {
+      item.style.display = 'block';
+    });
+    this.style.display = 'none'; // دکمه رو مخفی کن بعد کلیک
+
+    
+  });
+});
+
+
+}
+</script>
+</body>
+{% endblock %}
+{% endblock %}
+
+
+</html>
+

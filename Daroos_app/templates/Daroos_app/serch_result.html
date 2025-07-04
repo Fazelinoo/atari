@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}عطاری فاضل {% endblock %}
+{% block extra_head %}  <link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
+{% block content %}
+<body>
+
+    <div class="products-container">
+    <div class="product-grid">
+      {% if product %}
+      {% for daroo in product %}
+      <a href="{% url 'product_detail' daroo.id %}" style="text-decoration:none; color:inherit;">
+        <article class="product-card" tabindex="0">
+          <img src="{% if daroo.image %}{{ daroo.image.url }}{% else %}https://cdn.pixabay.com/photo/2016/06/24/10/47/herbs-1473754_1280.jpg{% endif %}" alt="{{ daroo.title }}" />
+          <h3>{{ daroo.title }}</h3>
+          <p>{{ daroo.description }}</p>
+          <div class="price">{{ daroo.price }}.000تومان</div>
+          <button class="btn-buy" aria-label="خرید {{ daroo.title }}">
+            <svg class="icon-cart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13M7 13l-4-8m5 0v-2a1 1 0 012 0v2m6 0v-2a1 1 0 012 0v2"/></svg>
+            خرید
+          </button>
+        </article>
+      </a>
+      {% endfor %}
+      {% else %}<h1>محصولی</h1>{% endif %}
+    
+      
+    </div>
+  </div>
+  
+
+</body>
+
+
+
+{% endblock %}
