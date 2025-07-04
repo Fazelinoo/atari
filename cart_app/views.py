@@ -83,14 +83,20 @@ def checkout(request):
             address = form.cleaned_data['address']
             phone_number = form.cleaned_data['phone_number']
 
+            # فقط یک Order بساز
+            order = Order.objects.create(
+                user=request.user,
+                address=address,
+                phone_number=phone_number
+            )
+
+            # برای هر محصول یک OrderItem بساز
             for product_id, quantity in cart.items():
                 product = Daroo.objects.get(id=product_id)
-                Order.objects.create(
-                    user=request.user,
+                OrderItem.objects.create(
+                    order=order,
                     product=product,
-                    quantity=quantity,
-                    address=address,
-                    phone_number=phone_number
+                    quantity=quantity
                 )
 
             request.session['cart'] = {}  # خالی کردن سبد خرید
@@ -98,6 +104,6 @@ def checkout(request):
     else:
         form = CheckoutForm()
 
-    return render(request, 'cart_app/checkout.html', {'form': form})    
+    return render(request, 'cart_app/checkout.html', {'form': form})
 def order_success(request):
     return render(request, 'cart_app/order_success.html')
