@@ -7,7 +7,15 @@
 {% endblock %}
 
 {% block content %}
+<div style="display: flex; justify-content: center; gap: 20px; margin-top: 100px;">
+  <a href="{% url 'cart_detail' %}" style="padding: 10px 20px; background-color: #4caf50; color: white; border-radius: 8px; text-decoration: none;">سبد خرید</a>
+  <a href="{% url 'my_orders' %}" style="padding: 10px 20px; background-color: #2196f3; color: white; border-radius: 8px; text-decoration: none;">سفارش‌های جاری</a>
+</div>
+
+
 <section class="cart-container">
+
+
   <div class="cart-title">سبد خرید شما</div>
   {% if cart_items %}
   <table class="cart-table">

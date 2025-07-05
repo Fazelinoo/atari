@@ -1,12 +1,21 @@
 from django.contrib.admin.views.decorators import staff_member_required
-@staff_member_required
-def all_orders(request):
-    orders = Order.objects.all().prefetch_related('items', 'user')
-    return render(request, 'cart_app/all_orders.html', {'orders': orders})
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, get_object_or_404, render
 from Daroos_app.models import Daroo
 from cart_app.form import CheckoutForm
 from .models import Order, OrderItem
+@staff_member_required
+def all_orders(request):
+    if request.method == "POST":
+        if 'delete_order_id' in request.POST:
+            order_id = request.POST.get('delete_order_id')
+            order = get_object_or_404(Order, id=order_id)
+            order.delete()
+            return redirect('all_orders')
+
+    orders = Order.objects.prefetch_related('items__product').all()
+    return render(request, 'cart_app/all_orders.html', {'orders': orders})
+
 
 
 
@@ -112,3 +121,9 @@ def checkout(request):
     return render(request, 'cart_app/checkout.html', {'form': form})
 def order_success(request):
     return render(request, 'cart_app/order_success.html')
+
+
+@login_required
+def my_orders(request):
+    orders = Order.objects.filter(user=request.user).prefetch_related('items__product').order_by('-created_at')
+    return render(request, 'cart_app/jaris_sefaresh.html', {'orders': orders})
