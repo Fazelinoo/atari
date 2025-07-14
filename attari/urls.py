@@ -27,6 +27,7 @@ urlpatterns = [
 
     path('cart/', include('cart_app.urls')),
 
+    path('admiin', include('admin_app.urls'))
     
 ]
 

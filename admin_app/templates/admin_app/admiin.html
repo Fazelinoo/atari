@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block title %}پنل مدیریت{% endblock %}
+
+{% block extra_head %}
+<style>
+  .admin-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .admin-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .admin-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background 0.3s;
+  }
+
+  .admin-button:hover {
+    background-color: #388e3c;
+  }
+
+  .order-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 20px;
+  }
+
+  .order-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+
+  .order-card h4 {
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  .order-card p {
+    font-size: 14px;
+    margin: 4px 0;
+  }
+
+  .order-card ul {
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+
+  .delete-button {
+    margin-top: 10px;
+    background: #e53935;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .delete-button:hover {
+    background: #c62828;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+  <h2>پنل مدیریت سایت</h2>
+</div>
+
+<div class="admin-actions">
+  <a href="{% url 'add_product' %}" class="admin-button">➕ افزودن محصول جدید</a>
+  <a href="/admin/" class="admin-button" style="background:#607d8b;">⚙️ مدیریت جنگو</a>
+</div>
+
+<h1>سفارش‌های جاری</h1>
+
+<div class="order-grid">
+  {% for order in orders %}
+    <div class="order-card">
+      <h4>{{ order.user.username }}</h4>
+      <p><strong>آدرس:</strong> {{ order.address }}</p>
+      <p><strong>تلفن:</strong> {{ order.phone_number }}</p>
+      <p><strong>تاریخ:</strong> {{ order.created_at|date:'Y-m-d H:i' }}</p>
+      <p><strong>محصولات:</strong></p>
+      <ul>
+        {% for item in order.items.all %}
+          <li>{{ item.product.title }} × {{ item.quantity }}</li>
+        {% endfor %}
+      </ul>
+
+       <form action="{% url 'toggle_payment_status' order.id %}" method="post" style="margin-top:10px;">
+  {% csrf_token %}
+  {% if order.is_payda %}
+    <button type="submit" class="admin-button" style="background-color: yellow;"> علامت بزن ارسال نشده</button>
+  {% else %}
+    <button type="submit" class="admin-button" style="background-color: green"> علامت بزن ارسال شده</button>
+  {% endif %}
+</form>
+      <form action="{% url 'delete_order' order.id %}" method="post" style="margin-top:10px;">
+  {% csrf_token %}
+  <button type="submit" class="delete-button" onclick="return confirm('آیا از حذف این سفارش مطمئن هستید؟');">🗑️ حذف</button>
+
+ 
+
+</form>
+
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
