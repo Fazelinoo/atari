@@ -1,5 +1,5 @@
 from django import forms
-from Daroos_app.models import Daroo
+from Daroos_app.models import  Daroo
 
 class ProductForm(forms.ModelForm):
     class Meta:

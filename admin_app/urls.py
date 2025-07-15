@@ -12,6 +12,8 @@ urlpatterns = [
     path('toggle_payment_status/<int:order_id>/', views.toggle_payment_status, name='toggle_payment_status'),
     path('delete_order/<int:order_id>/', views.delete_order, name='delete_order'),
 
+    
+
 
 
 
