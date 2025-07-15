@@ -9,12 +9,13 @@
   }
 
   .admin-actions {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-    flex-wrap: wrap; /* اجازه‌ی شکستن دکمه‌ها در صفحه کوچک */
-  }
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0 30px 0; /* فاصله بالا و پایین */
+  flex-wrap: wrap;
+}
+
 
   .admin-button {
     background-color: #4caf50;
@@ -101,6 +102,11 @@
     .admin-button {
       font-size: 13px;
     }
+    .admin-actions {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px; /* فاصله بیشتر در موبایل */
+  }
   }
 </style>
 {% endblock %}
