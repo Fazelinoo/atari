@@ -13,6 +13,7 @@
     justify-content: center;
     gap: 15px;
     margin-bottom: 30px;
+    flex-wrap: wrap; /* اجازه‌ی شکستن دکمه‌ها در صفحه کوچک */
   }
 
   .admin-button {
@@ -23,6 +24,7 @@
     text-decoration: none;
     font-size: 15px;
     transition: background 0.3s;
+    white-space: nowrap;
   }
 
   .admin-button:hover {
@@ -73,8 +75,36 @@
   .delete-button:hover {
     background: #c62828;
   }
+
+  /* --- Media Queries --- */
+  @media (max-width: 600px) {
+    .admin-button {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+
+    .admin-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .order-card {
+      padding: 12px;
+    }
+
+    .order-card h4 {
+      font-size: 15px;
+    }
+
+    .order-card p,
+    .delete-button,
+    .admin-button {
+      font-size: 13px;
+    }
+  }
 </style>
 {% endblock %}
+
 
 {% block content %}
 <div class="admin-header">

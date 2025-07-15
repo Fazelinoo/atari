@@ -1,5 +1,81 @@
 {% extends 'base.html' %}
 {% block title %}افزودن محصول جدید{% endblock %}
+{% block extra_head %}
+<style>
+  .add-product-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .add-product-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .add-product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .submit-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .submit-button:hover {
+    background-color: #388e3c;
+  }
+
+  .back-link {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  /* 📱 ریسپانسیو برای موبایل */
+  @media (max-width: 480px) {
+    .add-product-container {
+      padding: 10px;
+    }
+
+    .submit-button {
+      font-size: 14px;
+      padding: 8px;
+    }
+
+    .back-link a {
+      font-size: 13px;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="add-product-container">
+  <h2>➕ افزودن محصول جدید</h2>
+  <form method="post" enctype="multipart/form-data" class="add-product-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="submit-button">✔ ثبت محصول</button>
+  </form>
+  <div class="back-link">
+    <a href="{% url 'admiin' %}">← بازگشت به پنل مدیریت</a>
+  </div>
+</div>
+{% endblock %}
 
 {% block content %}
 <div style="max-width: 600px; margin: 0 auto;">
