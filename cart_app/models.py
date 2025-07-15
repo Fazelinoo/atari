@@ -9,7 +9,7 @@ class Order(models.Model):
     address = models.TextField(null=True)
     phone_number = models.CharField(max_length=20, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
-    is_sent = models.BooleanField(default=False)  # ← این خط اضافه شده
+    is_sent = models.BooleanField(default=False, null=True)  # ← این خط اضافه شده
 
     def __str__(self):
         status = "ارسال شده" if self.is_sent else "ارسال نشده"
