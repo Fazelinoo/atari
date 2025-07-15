@@ -36,6 +36,6 @@ def add_product(request):
 @require_POST
 def toggle_payment_status(request, order_id):
     order = get_object_or_404(Order, id=order_id)
-    order.is_payda = not order.is_payda
+    order.is_sent = not order.is_sent
     order.save()
     return redirect('admiin')

@@ -147,7 +147,7 @@
 
        <form action="{% url 'toggle_payment_status' order.id %}" method="post" style="margin-top:10px;">
   {% csrf_token %}
-  {% if order.is_payda %}
+  {% if order.is_sent %}
     <button type="submit" class="admin-button" style="background-color: yellow;"> علامت بزن ارسال نشده</button>
   {% else %}
     <button type="submit" class="admin-button" style="background-color: green"> علامت بزن ارسال شده</button>

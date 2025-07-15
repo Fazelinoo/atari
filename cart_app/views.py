@@ -127,3 +127,14 @@ def order_success(request):
 def my_orders(request):
     orders = Order.objects.filter(user=request.user).prefetch_related('items__product').order_by('-created_at')
     return render(request, 'cart_app/jaris_sefaresh.html', {'orders': orders})
+@login_required
+def delete_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    if order.is_sent:
+        # اجازه حذف داده نشود یا پیام بده
+        return redirect('my_orders')
+    if request.method == 'POST':
+        order.delete()
+        return redirect('my_orders')
+    # می‌تونی یک صفحه تایید هم بسازی یا مستقیما حذف کنی
+    return redirect('my_orders')

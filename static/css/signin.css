@@ -1,0 +1,106 @@
+/* account.css */
+
+body {
+  background: #f2f6fc;
+  font-family: 'Vazirmatn', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  background: white;
+  padding: 40px 35px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width: 380px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #333;
+  font-size: 28px;
+}
+
+.form-group {
+  margin-bottom: 22px;
+  text-align: right;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1.8px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
+}
+
+.text-danger p {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #e53935;
+  text-align: right;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 13px 0;
+  font-size: 17px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #388e3c;
+}
+
+.login-links {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-links a {
+  color: #4caf50;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.login-links a:hover {
+  color: #388e3c;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .login-container {
+    padding: 30px 20px;
+    width: 95%;
+  }
+}
