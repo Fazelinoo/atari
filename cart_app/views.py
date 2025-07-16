@@ -124,6 +124,7 @@ def order_success(request):
 
 
 @login_required
+
 def my_orders(request):
     orders = Order.objects.filter(user=request.user).prefetch_related('items__product').order_by('-created_at')
     return render(request, 'cart_app/jaris_sefaresh.html', {'orders': orders})

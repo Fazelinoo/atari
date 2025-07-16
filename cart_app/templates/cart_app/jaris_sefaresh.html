@@ -32,7 +32,7 @@
       </ul>
 
       {% if not order.is_sent %}
-        <form action="{% url 'delete_user_order' order.id %}" method="post" onsubmit="return confirm('آیا از حذف این سفارش مطمئن هستید؟');">
+        <form action="{% url 'delete_order' order.id %}" method="post" onsubmit="return confirm('آیا از حذف این سفارش مطمئن هستید؟');">
           {% csrf_token %}
           <button type="submit" style="background:#e53935; color:white; padding:8px 15px; border:none; border-radius:6px; cursor:pointer;">حذف سفارش</button>
         </form>

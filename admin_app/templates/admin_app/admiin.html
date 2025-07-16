@@ -130,9 +130,9 @@
 </div>
 
 <h1>سفارش‌های جاری</h1>
-
+{% for order in orders %}
 <div class="order-grid">
-  {% for order in orders %}
+    
     <div class="order-card">
       <h4>{{ order.user.username }}</h4>
       <p><strong>آدرس:</strong> {{ order.address }}</p>
