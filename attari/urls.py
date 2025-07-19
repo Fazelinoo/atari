@@ -19,7 +19,17 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
+
+from django.views.generic import TemplateView
+from .sitemaps import StaticViewSitemap
+from django.contrib.sitemaps.views import sitemap
+sitemaps = {'static': StaticViewSitemap,
+}
+
 urlpatterns = [
+    path('robots.txt', TemplateView.as_view(template_name='home_app/robots.txt', content_type='text/plain')),
     path('admin/', admin.site.urls),
     path('', include('home_app.urls')),
     path('daroos/', include('Daroos_app.urls')),
@@ -27,8 +37,8 @@ urlpatterns = [
 
     path('cart/', include('cart_app.urls')),
 
-    path('admiin', include('admin_app.urls'))
-    
+    path('admiin', include('admin_app.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 if settings.DEBUG:

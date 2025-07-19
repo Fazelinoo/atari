@@ -32,20 +32,20 @@
     <tbody>
       {% for item in cart_items %}
       <tr>
-        <td>{{ item.product.title }}</td>
+        <td data-label="محصول">{{ item.product.title }}</td>
         <td>
           <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}https://cdn.pixabay.com/photo/2016/06/24/10/47/herbs-1473754_1280.jpg{% endif %}" alt="{{ item.product.title }}">
         </td>
-        <td>
+        <td data-label="تعداد">
           <form action="{% url 'cart_update' item.product.id %}" method="post" style="display:inline;">
             {% csrf_token %}
             <input type="number" name="quantity" value="{{ item.quantity }}" min="1" style="width:50px; text-align:center; border-radius:8px; border:1px solid #a5d6a7;">
             <button type="submit" style="background:#81c784; color:#1b5e20; border:none; border-radius:8px; padding:3px 10px; margin-right:5px; cursor:pointer;">بروزرسانی</button>
           </form>
         </td>
-        <td>{{ item.product.price }}.000 تومان</td>
-        <td>{{ item.total_price }}.000 تومان</td>
-        <td>
+        <td data-label="قیمت واحد">{{ item.product.price }}.000 تومان</td>
+        <td data-label="قیمت کل">{{ item.total_price }}.000 تومان</td>
+        <td data-label="حذف">
           <form action="{% url 'cart_remove' item.product.id %}" method="post" style="display:inline;">
             {% csrf_token %}
             <button type="submit" style="background:#dc3545; color:white; border:none; border-radius:8px; padding:3px 10px; cursor:pointer;">حذف</button>
