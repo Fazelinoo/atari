@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
+    'django.contrib.sitemaps',
     'home_app',
 
 
@@ -138,7 +138,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # مسیر فایل‌های استاتیک (CSS، JS و ...)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # مسیر فایل‌های رسانه‌ای (آپلودها، تصاویر و ...)
 MEDIA_URL = '/media/'
