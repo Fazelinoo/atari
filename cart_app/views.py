@@ -110,6 +110,8 @@ def checkout(request):
                     OrderItem.objects.create(
                         order=order,
                         product=product,
+                        first_name=first_name,
+                        last_name=last_name,
                         quantity=quantity
                     )
                 except Daroo.DoesNotExist:
@@ -124,40 +126,6 @@ def checkout(request):
 
 
 
-def checkout(request):
-    if not request.user.is_authenticated:
-        return redirect('/accounts/login/')
-    
-    cart = request.session.get('cart', {})  # فرض بر اینکه cart توی session نگهداری می‌شه
-
-    if request.method == 'POST':
-        form = CheckoutForm(request.POST)
-        if form.is_valid():
-            address = form.cleaned_data['address']
-            phone_number = form.cleaned_data['phone_number']
-
-            # فقط یک Order بساز
-            order = Order.objects.create(
-                user=request.user,
-                address=address,
-                phone_number=phone_number
-            )
-
-            # برای هر محصول یک OrderItem بساز
-            for product_id, quantity in cart.items():
-                product = Daroo.objects.get(id=product_id)
-                OrderItem.objects.create(
-                    order=order,
-                    product=product,
-                    quantity=quantity
-                )
-
-            request.session['cart'] = {}  # خالی کردن سبد خرید
-            return redirect('order_success')  # صفحه موفقیت
-    else:
-        form = CheckoutForm()
-
-    return render(request, 'cart_app/checkout.html', {'form': form})
 def order_success(request):
     return render(request, 'cart_app/order_success.html')
 
