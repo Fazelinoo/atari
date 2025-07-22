@@ -91,15 +91,12 @@ def checkout(request):
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
         if form.is_valid():
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
             address = form.cleaned_data['address']
             phone_number = form.cleaned_data['phone_number']
 
             order = Order.objects.create(
                 user=request.user,
-                first_name=first_name,
-                last_name=last_name,
+                
                 address=address,
                 phone_number=phone_number
             )
@@ -110,8 +107,7 @@ def checkout(request):
                     OrderItem.objects.create(
                         order=order,
                         product=product,
-                        first_name=first_name,
-                        last_name=last_name,
+                       
                         quantity=quantity
                     )
                 except Daroo.DoesNotExist:
