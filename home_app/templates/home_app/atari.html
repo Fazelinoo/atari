@@ -32,7 +32,7 @@
         <article class="product-card" tabindex="0" {% if forloop.counter > 6 %}style="display:none;"{% endif %}>
           <img src="{% if daroo.image %}{{ daroo.image.url }}{% else %}https://cdn.pixabay.com/photo/2016/06/24/10/47/herbs-1473754_1280.jpg{% endif %}" alt="{{ daroo.title }}" />
           <h3>{{ daroo.title }}</h3>
-          <p>{{ daroo.description }}</p>
+          <p>{{ daroo.description|truncatechars:30 }}</p>
           <div class="price">{{ daroo.price }}.000تومان</div>
           <button class="btn-buy" aria-label="خرید {{ daroo.title }}">
             <svg class="icon-cart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -1,27 +1,32 @@
+/* فونت و زمینه */
 body {
   font-family: "Vazirmatn", sans-serif;
   background: linear-gradient(135deg, #e0f7ec, #ffffff);
   margin: 0;
   padding: 0;
   direction: rtl;
+  box-sizing: border-box;
 }
 
+/* کانتینر فرم */
 .login-container {
-  max-width: 400px;
+  max-width: 420px;
   margin: 60px auto;
   background: #ffffff;
   padding: 35px 30px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   text-align: center;
-  animation: fadeIn 0.7s ease-in;
+  animation: fadeIn 0.6s ease-in;
 }
 
+/* انیمیشن */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* تیتر فرم */
 .login-container h2 {
   margin-bottom: 30px;
   color: #2e7d32;
@@ -29,56 +34,61 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
 
+/* فیلدهای فرم */
 .form-group {
   text-align: right;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-weight: bold;
   color: #444;
+  font-size: 15px;
 }
 
+/* آیکون و ورودی */
 .input-icon {
   position: relative;
 }
 
 .input-icon i {
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   color: #4caf50;
+  font-size: 15px;
 }
 
 .input-icon input {
   width: 100%;
   padding: 10px 40px 10px 12px;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 15px;
   transition: border 0.3s, box-shadow 0.3s;
 }
 
 .input-icon input:focus {
   border-color: #4caf50;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.2);
   background-color: #f9fff9;
   outline: none;
 }
 
+/* دکمه ورود */
 .login-btn {
   width: 100%;
   background: linear-gradient(to right, #4caf50, #388e3c);
   color: white;
   padding: 12px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
@@ -90,16 +100,18 @@ body {
   background: linear-gradient(to right, #43a047, #2e7d32);
 }
 
+/* پیام خطا */
 .error-message {
   color: #d32f2f;
   font-size: 14px;
   margin-top: 15px;
   background-color: #fdecea;
   padding: 8px 12px;
-  border-radius: 6px;
+  border-radius: 8px;
   display: inline-block;
 }
 
+/* لینک‌ها */
 .login-links {
   margin-top: 25px;
   font-size: 14px;
@@ -116,19 +128,29 @@ body {
   text-decoration: underline;
 }
 
-/* 📱 ریسپانسیو */
+/* 📱 ریسپانسیو موبایل */
 @media (max-width: 480px) {
   .login-container {
-    margin: 30px 15px;
-    padding: 25px;
+    margin: 30px 16px;
+    padding: 28px 20px;
   }
 
   .login-container h2 {
     font-size: 22px;
+    gap: 6px;
+  }
+
+  .input-icon input {
+    font-size: 14px;
+    padding: 9px 38px 9px 10px;
   }
 
   .login-btn {
     font-size: 15px;
+    padding: 10px;
+  }
+
+  .form-group label {
+    font-size: 14px;
   }
 }
-

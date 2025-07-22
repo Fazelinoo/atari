@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}تسویه حساب | عطاری فاضل{% endblock %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+{% endblock %}
+
 {% block content %}
-<h2>تسویه حساب</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">ثبت سفارش</button>
-</form>
+<div class="checkout-container">
+  <h2>تسویه حساب</h2>
+  <form method="post" class="checkout-form">
+    {% csrf_token %}
+    <div class="form-group">{{ form.first_name.label_tag }}{{ form.first_name }}</div>
+    <div class="form-group">{{ form.last_name.label_tag }}{{ form.last_name }}</div>
+    <div class="form-group">{{ form.phone_number.label_tag }}{{ form.phone_number }}</div>
+    <div class="form-group">{{ form.address.label_tag }}{{ form.address }}</div>
+
+    <button type="submit" class="submit-btn">ثبت سفارش</button>
+  </form>
+</div>
 {% endblock %}

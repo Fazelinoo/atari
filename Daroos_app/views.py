@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Daroo
+from django.db.models import Q
   # فرض بر این است که مدل محصول شما Product نام دارد
 
 
@@ -15,7 +16,8 @@ def product_detail(request, product_id):
 
 
 def search(request):
-
     q = request.GET.get('q')
-    darro = Daroo.objects.filter(title__icontains=q)
+    darro = Daroo.objects.filter(
+        Q(title__icontains=q) | Q(description__icontains=q)
+    )
     return render(request, "Daroos_app/serch_result.html", context={"product": darro})

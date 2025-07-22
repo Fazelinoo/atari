@@ -80,9 +80,48 @@ def cart_remove(request, product_id):
 
 
 
+
+
 def checkout(request):
-    # اینجا می‌تونی منطق پرداخت یا فرم تسویه رو اضافه کنی
-    return render(request, 'cart_app/checkout.html')
+    if not request.user.is_authenticated:
+        return redirect('/accounts/login/')
+
+    cart = request.session.get('cart', {})
+
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            address = form.cleaned_data['address']
+            phone_number = form.cleaned_data['phone_number']
+
+            order = Order.objects.create(
+                user=request.user,
+                first_name=first_name,
+                last_name=last_name,
+                address=address,
+                phone_number=phone_number
+            )
+
+            for product_id, quantity in cart.items():
+                try:
+                    product = Daroo.objects.get(id=product_id)
+                    OrderItem.objects.create(
+                        order=order,
+                        product=product,
+                        quantity=quantity
+                    )
+                except Daroo.DoesNotExist:
+                    continue
+
+            request.session['cart'] = {}
+            return redirect('order_success')
+    else:
+        form = CheckoutForm()
+
+    return render(request, 'cart_app/checkout.html', {'form': form})
+
 
 
 def checkout(request):

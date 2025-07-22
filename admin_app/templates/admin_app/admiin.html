@@ -134,7 +134,7 @@
 <div class="order-grid">
     
     <div class="order-card">
-      <h4>{{ order.user.username }}</h4>
+      <h4>{{ order.first_name }} {{ order.last_name }}</h4>
       <p><strong>آدرس:</strong> {{ order.address }}</p>
       <p><strong>تلفن:</strong> {{ order.phone_number }}</p>
       <p><strong>تاریخ:</strong> {{ order.created_at|date:'Y-m-d H:i' }}</p>

@@ -1,0 +1,120 @@
+body {
+  font-family: "Vazirmatn", sans-serif;
+  background: #f4f4f2;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  box-sizing: border-box;
+}
+
+/* کانتینر اصلی */
+.products-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* گرید محصولات */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* کارت هر محصول */
+.product-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  padding: 16px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* عکس محصول */
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* عنوان محصول */
+.product-card h3 {
+  font-size: 18px;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+/* توضیحات */
+.product-card p {
+  font-size: 14px;
+  color: #444;
+  height: 45px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.6;
+}
+
+/* قیمت */
+.price {
+  font-weight: bold;
+  color: #388e3c;
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+/* دکمه خرید */
+.btn-buy {
+  margin-top: 15px;
+  background: linear-gradient(to right, #4caf50, #2e7d32);
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.3s ease;
+}
+
+.btn-buy:hover {
+  background: linear-gradient(to right, #43a047, #1b5e20);
+}
+
+/* آیکون خرید */
+.icon-cart {
+  width: 20px;
+  height: 20px;
+}
+
+/* ریسپانسیو کامل */
+@media (max-width: 600px) {
+  .product-card img {
+    height: 150px;
+  }
+
+  .product-card h3 {
+    font-size: 16px;
+  }
+
+  .product-card p {
+    font-size: 13px;
+  }
+
+  .btn-buy {
+    font-size: 14px;
+  }
+}

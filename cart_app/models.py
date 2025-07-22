@@ -8,6 +8,9 @@ class Order(models.Model):
     quantity = models.PositiveIntegerField(default=1, null=True)
     address = models.TextField(null=True)
     phone_number = models.CharField(max_length=20, null=True)
+
+    first_name = models.CharField(max_length=50, null=True)
+    last_name = models.CharField(max_length=50, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     is_sent = models.BooleanField(default=False, null=True, blank=True)  # ← این خط اضافه شده
 
