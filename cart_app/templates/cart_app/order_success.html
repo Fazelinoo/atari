@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
-{% block title %} موفقیت در خرید {% endblock %}
+{% load static %}
 
 
-
+{% block title %}سفارش با موفقیت ثبت شد{% endblock %}
+{% block extra_head %}<link rel='stylesheet' href='{% static 'css/order_success.css' %}'>{% endblock %}
 {% block content %}
-
-<h1>hello beach</h1>
-
+<div class="success-container">
+  <div class="success-card">
+    <img src="{% static 'sucses.png' %}" alt="موفقیت" class="success-icon success-icon large-icon">
+    <h2>سفارش شما با موفقیت ثبت شد</h2>
+    <p>از خرید شما از عطاری فاضل متشکریم 🌿</p>
+    <p>لطفا منتظر ارسال باشید🙏</p>
+    <a href="{% url 'home' %}" class="btn-home">بازگشت به صفحه اصلی</a>
+  </div>
+</div>
 {% endblock %}

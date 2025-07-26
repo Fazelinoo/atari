@@ -4,6 +4,7 @@ body {
   direction: rtl;
   margin: 0;
   padding: 0;
+  margin-top: 20px;
 }
 
 .checkout-container {
@@ -69,7 +70,10 @@ body {
 
 @media (max-width: 480px) {
   .checkout-container {
-    margin: 20px;
+
+    margin: 80px 20px 20px 20px;
+    
+    margin-top: 200px;
     padding: 20px;
   }
 
