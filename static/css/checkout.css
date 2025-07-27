@@ -68,12 +68,12 @@ body {
   background: linear-gradient(to right, #43a047, #1b5e20);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) {سا
   .checkout-container {
 
     margin: 80px 20px 20px 20px;
     
-    margin-top: 200px;
+    margin-top: 20px;
     padding: 20px;
   }
 
